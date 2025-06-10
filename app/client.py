@@ -68,15 +68,13 @@ class MCPClient:
         # List available tools
         response = await self.session.list_tools()
 
-        # print(response.tools)
-
 
         self.available_tools = [{
             "name": tool.name,
             "description": tool.description,
             "input_schema": tool.inputSchema
         } for tool in response.tools]
-        #tools = response.tools
+        
         print("\nConnected to server with tools:", [tool.name for tool in response.tools])
 
 
@@ -131,7 +129,7 @@ class MCPClient:
                 prompt = input("\nQuery: ").strip()
                 if prompt.lower() == 'quit':
                     break
-                chat_history.append(create_message("user", prompt))#.append({"role": "user", "content": prompt})
+                chat_history.append(create_message("user", prompt))
 
             response, ask_for_prompt = await self.process_prompt(chat_history)
             chat_history += response
