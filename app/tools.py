@@ -21,7 +21,6 @@ def play_notification(keyword: str):
     """plays notification sound and updates the keyword count"""
     playsound("assets/notification.mp3", block=False)
     update_keyword_occurrences(user_id, keyword, 1)
-    # return "[say the keyword]"
 
 @mcp.tool()
 def set_keyword(keyword: str) -> str:
